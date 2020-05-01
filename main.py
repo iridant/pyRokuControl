@@ -1,6 +1,6 @@
 import tkinter as tk 
 import tkinter.font as tkfont
-import requests
+import requests, time, urllib.parse
 
 roku_address = "http://0.0.0.0:8060"
 
@@ -8,6 +8,9 @@ r = tk.Tk()
 r.title("Roku Remote")
 r.configure(bg="black")
 r.resizable(False, False)
+
+e1 = None
+
 
 def selectClick():
 	requests.post("{}/keypress/select".format(roku_address))
@@ -42,8 +45,12 @@ def replayClick():
 def infoClick():
 	requests.post("{}/keypress/info".format(roku_address))
 
-def ppClick():
-	requests.post("{}/keypress/play".format(roku_address))
+def inputClick():
+	finput = e1.get("1.0", "end")
+
+	for char in finput:
+		requests.post("{}/keypress/LIT_{}".format(roku_address, urllib.parse.quote(char)))
+		time.sleep(0.05)
 
 
 selectButton = tk.Button(r, height=5, width=10, text="o", command=selectClick, bg='purple', fg='white')
@@ -79,7 +86,13 @@ infoButton.grid(row=3,column=3)
 replayButton = tk.Button(r, height=5, width=10, text="REPLAY", command=replayClick, bg='purple', fg='white')
 replayButton.grid(row=3,column=1)
 
-ppButton = tk.Button(r, height=5, width=10, text="PLAY", command=ppClick, bg='purple', fg='white')
-ppButton.grid(row=4,column=2)
+inputButton = tk.Button(r, height=5, width=10, text="PLAY", command=inputClick, bg='purple', fg='white')
+inputButton.grid(row=4,column=2)
+
+e1 = tk.Text(r, width=20, height=16)
+e1.grid(row=1, column=4, columnspan=3, rowspan=3)
+
+inputButton = tk.Button(r, height=5, width=22, text="INPUT", command=inputClick, bg='purple', fg='white')
+inputButton.grid(row=4,column=4, columnspan=2)
 
 r.mainloop()
