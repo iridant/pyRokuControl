@@ -2,7 +2,7 @@ import tkinter as tk
 import tkinter.font as tkfont
 import requests
 
-roku_address = "http://192.168.0.8:8060"
+roku_address = "http://0.0.0.0:8060"
 
 r = tk.Tk() 
 r.title("Roku Remote")
