@@ -1,4 +1,7 @@
 # pyRokuControl
+
+A python application that communicates with a Roku device on the LAN through the Roku API.
+
 Control your Roku from your computer with this python application.
 
 ## FEATURES:
