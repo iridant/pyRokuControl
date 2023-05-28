@@ -1,6 +1,10 @@
 # pyRokuControl
 Control your Roku from your computer with this python application.
 
+## FEATURES:
+- Every button that is on a physical Roku remote with the exception of app shortcut buttons
+- A textbox that allows you to input text on your roku without scrolling through each character of the alphabet on your screen.
+
 ## TODO:
 - Implement an ARP ping on the LAN to discover device with the "roku port" open automatically
 
